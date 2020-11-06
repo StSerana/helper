@@ -1,20 +1,4 @@
-# This is a sample Python script.
-
-# Press ⌃R to execute it or replace it with your code.
-# Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
-
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
-"""Проект «Справочник» 
+"""Проект «Справочник»
 
 Свойства: 
 имя, фамилия, телефон, город, e-mail 
@@ -29,6 +13,7 @@ if __name__ == '__main__':
 поиск (e-mail - уникальная запись) 
 
 удаление """
+
 class Note:
     name = ''
     surname = ''
@@ -46,9 +31,12 @@ class Note:
 class Helper:
     name = "Helper"
     notes = {}
+    def __init__(self, name):
+        super(Helper, self).__init__()
+        self.name = name
 
-    def __init__(self):
-        return self
+    def __str__(self):
+        return self.name
 
     def add(self, note):
         if note.name[0].isUpper() and note.surname[0].isUpper() and '@' in note.email and type(note.phone) is str:
@@ -61,7 +49,7 @@ class Helper:
         if self.notes.__contains__(note.__hash__):
             self.notes[note.__hash__] = note
         return self.notes[note.__hash__]
-    
+
     def search(self, email):
         if self.notes.__contains__(hash(email)):
             return self.notes[hash(email)]
